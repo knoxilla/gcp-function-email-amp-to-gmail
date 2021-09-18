@@ -1,0 +1,15 @@
+{
+  "name": "sendMail",
+  "version": "1.0.0",
+  "description": "Send emails with Nodemailer from Google Cloud",
+  "author": "Thomas Knox <tknox@umich.edu>",
+  "homepage": "https://engin.umich.edu",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemailer": "^6.1.0"
+  }
+}
