@@ -6,6 +6,11 @@
  * @param {!express:Response} res HTTP response context.
  */
 function handlePOST(req, res) {
+
+  console.log("In the damn function")
+
+  console.log(process.env)
+
   if (checkAllowedOrigin(req.headers.origin)) {
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
   }
@@ -19,6 +24,8 @@ function handlePOST(req, res) {
     });
     return;
   }
+
+  console.log("Passed argument checks")
 
   const nodeMailer = require("nodemailer");
 
@@ -34,6 +41,8 @@ function handlePOST(req, res) {
     },
   });
 
+  console.log("Created transporter")
+
   const mailOptions = {
     from: req.body.from || process.env.MAIL_FROM,
     to: req.body.to || process.env.MAIL_TO,
@@ -41,6 +50,10 @@ function handlePOST(req, res) {
     subject: req.body.subject,
     text: req.body.text,
   };
+
+  console.log("Created mail options")
+
+  console.log("Trying to sendMail")
 
   transporter
     .sendMail(mailOptions)
@@ -60,6 +73,9 @@ function handlePOST(req, res) {
         },
       });
     });
+
+   console.log("Sent mail!")
+
 }
 
 /**
@@ -88,8 +104,9 @@ function handleOPTIONS(req, res) {
  * @param origin HTTP request origin.
  */
 function checkAllowedOrigin(origin) {
-  const allowedOrigins = process.env.ALLOWED_ORIGINS.split(",");
-  return allowedOrigins.includes(origin);
+  return true;
+  // const allowedOrigins = process.env.ALLOWED_ORIGINS.split(",");
+  // return allowedOrigins.includes(origin);
 }
 
 /**

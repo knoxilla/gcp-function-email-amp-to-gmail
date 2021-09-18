@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+curl -H "Content-Type: application/json" \
+   -H "Origin: localhost" \
+   --data @body.json \
+   -XPOST "http://localhost:8080"
