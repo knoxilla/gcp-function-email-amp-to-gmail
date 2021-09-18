@@ -1,2 +1,4 @@
 node_modules/
 setenv
+creds.json
+*.json

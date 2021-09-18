@@ -12,7 +12,8 @@ function handlePOST(req, res) {
   console.log(process.env)
 
   if (checkAllowedOrigin(req.headers.origin)) {
-    res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+    // res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+    res.setHeader("Access-Control-Allow-Origin", "*");
   }
 
   if (!req.body.subject || !req.body.text) {

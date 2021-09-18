@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
+HOST=http://localhost:8080
+
+PROD=${1-}
+
+HOST=https://us-central1-amp-email-sender.cloudfunctions.net/sendMail
+
+TOKEN=$(gcloud auth application-default print-access-token)
+TOKEN=$(gcloud auth print-identity-token)
+
 curl -H "Content-Type: application/json" \
    -H "Origin: localhost" \
+   -H "Authorization: Bearer ${TOKEN}" \
    --data @body.json \
-   -XPOST "http://localhost:8080"
+   -XPOST "${HOST}"
